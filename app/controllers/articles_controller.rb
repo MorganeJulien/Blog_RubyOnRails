@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
-    @article = Article.all
+    @articles = Article.all
   end
 
   def new
@@ -19,6 +19,12 @@ class ArticlesController < ApplicationController
 
   def show
     load_article
+  end
+
+  def destroy
+    load_article
+    @article.destroy
+    redirect_to articles_path()
   end
 
   def load_article

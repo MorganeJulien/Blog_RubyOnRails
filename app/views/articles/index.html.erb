@@ -1,19 +1,22 @@
 <div class="container">
   <div class="row">
-        <div class="col s6">
+    <%- @articles.each  do |article| %>
+        <div class="col s4">
           <div class="card">
             <div class="card-image">
               <img src="/bordeaux.jpeg">
-              <span class="card-title">Card Title</span>
+              <span class="card-title"><%= article.title %></span>
             </div>
             <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+              <span><strong>Date de publication : </strong> <%= article.date %> </span>
+              <p> <%= article.chapeau %></p>
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
+              <%= link_to "Voir l'article", article_path(article)%>
+              <%= link_to "Supprimer l'article", article_path(article), method: :delete, data: {confirm: "Etes-vous sure de vouloir supprimer cette article ? "}%>
             </div>
           </div>
         </div>
+        <%end%>
       </div>
 </div>
